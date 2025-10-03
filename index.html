@@ -111,6 +111,7 @@ font-family: "Nunito Sans", sans-serif;
         <h3> Birthday Mode </h3>
         <P id="warning4"> the birthday party is so tuff boiii, includes "ads", and you slowly lose slots because yall keep eating the cake </P>
         <button id = "Apply5" onclick="apply5()"> Apply </button>
+          <button id = "Apply5DARK" onclick="apply5DARK()"> Apply (Dark Mode) </button>
         <button id = "Remove5" onclick="remove5()"> Remove </button>
         <h3>Coming Soon</h3>
         <h3> Custom</h3>
@@ -196,6 +197,9 @@ limit += 50
     }
 document.body.style.backgroundColor = 'rgb(210, 182, 114)';
 document.querySelector(".thing54").style.backgroundColor = 'rgb(202, 36, 36)';
+        if (localStorage.getItem("button5dark") == "Yes") {
+document.body.style.backgroundColor = 'rgb(54, 100, 110)';
+        }
  document.addEventListener('DOMContentLoaded', () => {
     const playButton = document.getElementById('trigger');
     const video = document.getElementById('fullScreenVideo');
@@ -450,6 +454,12 @@ goal -= randomnumber
 function apply5() {
     localStorage.setItem("button5", "Yes");
        document.getElementById("Apply5").disabled = true;
+    alert("Reload the page for the effect to take place. (WILL INSTANTLY START ONCE IT LOADS)")
+    }
+     function apply5DARK() {
+        localStorage.setItem("button5", "Yes");
+    localStorage.setItem("button5dark", "Yes");
+       document.getElementById("Apply5DARK").disabled = true;
     alert("Reload the page for the effect to take place. (WILL INSTANTLY START ONCE IT LOADS)")
     }
     function remove5() {
