@@ -154,7 +154,7 @@ document.getElementById("warning8").textContent = "You currently have a modifier
         const timerInterval = setInterval(function() {
             speedruntimer2.innerHTML = timeRemaining + " Seconds";
             timeRemaining--;
-            if (timeRemaining <= 21) {
+            if (timeRemaining == 21) {
                  const audio = new Audio('speedruntimeruhcountdown.mp3');
          audio.play();
             }
@@ -249,7 +249,7 @@ const timerInterval = setInterval(() => {
     document.getElementById("limit").innerHTML = "You have this many tries to get " + goal + " until you DIE: " + limit;
     let timeRemaining = 100000;
             timeRemaining--;
-    if (timeRemaining <= 21) {
+    if (timeRemaining == 21) {
                  const audio = new Audio('speedruntimeruhcountdown.mp3');
          audio.play();
             }
@@ -303,7 +303,7 @@ let timeRemaining = Math.floor(Math.random() * (100 - 30 + 1)) + 30;
  let speedrunTimer = document.getElementById("speedruntimer");
             speedrunTimer.innerHTML = timeRemaining + " Seconds";
             timeRemaining--;
-            if (timeRemaining <= 21) {
+            if (timeRemaining == 21) {
                  const audio = new Audio('speedruntimeruhcountdown.mp3');
          audio.play();
             }
