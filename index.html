@@ -14,12 +14,19 @@ body {
     text-align: left;
 
 }
+.img2 {
+     width: 0px;
+    height: 0px;
+        display: flex; 
+         margin-left: auto;
+  margin-right: auto;
+        align-items: center;
+}
 .thing54 {
      border-radius: 15px 15px 0px 0px;
   background-color: rgb(7, 150, 62);
   outline: 5px solid black;
 }
-
 img {
     width: 100%;
     height: 150px;
@@ -68,6 +75,9 @@ font-family: "Nunito Sans", sans-serif;
 <h1 id="speedruntimer2"> </h1>
     <h1 id="warning8"></h1>
     <p id="d"> </p>
+    <div class="img2">
+    <img id="pumpkin" src="https://wallpapers.com/images/featured/jack-o-lantern-png-kjxj421cv1v1qeqc.jpg">
+    </div>
 <h1 id="thing"> Something </h1>
 <p id="counter">  </p>
     <p id="Chancething"> 1% </p>
@@ -111,6 +121,10 @@ font-family: "Nunito Sans", sans-serif;
         <P id="warning3"> You can guess from the title, no longer will need to get 67 but will randomly generate a number from the min and max and that's your goal. </P>
         <button id = "Apply4" onclick="apply4()"> Apply </button>
         <button id = "Remove4" onclick="remove4()"> Remove </button>
+        <h3> Halloween Mode </h3>
+        <P id="warning6"> Spooky Theme! Every once in awhile, there will be a pumpkin that will ask for a certain amount of limit slots, if you don't have enough, you DIE. </P>
+        <button id = "Apply6" onclick="apply6()"> Apply </button>
+        <button id = "Remove6" onclick="remove6()"> Remove </button>
         <h3> Birthday Mode </h3>
         <P id="warning4"> the birthday party is so tuff boiii, includes "ads", and you slowly lose slots because yall keep eating the cake </P>
         <button id = "Apply5" onclick="apply5()"> Apply </button>
@@ -145,8 +159,6 @@ trueorfalse = true;
 goal = insaneamount;
         fab.innerHTML = "Special Round! You have 2 minutes to get " + insaneamount + " before the timer ends! Good luck.";
 document.addEventListener('click', function() {
-        const audio = new Audio('specialround.mp3');
-        audio.play();
     }, { once: true });
 if (localStorage.getItem("button2") == "Yes") {
 document.getElementById("warning8").textContent = "You currently have a modifier that is messing up the timer (i would fix it but i almost just messed up the whole game and your actual timer is at the top above the below one.) Remember, your goal is " + goal + ".";
@@ -249,10 +261,6 @@ const timerInterval = setInterval(() => {
     document.getElementById("limit").innerHTML = "You have this many tries to get " + goal + " until you DIE: " + limit;
     let timeRemaining = 100000;
             timeRemaining--;
-    if (timeRemaining == 21) {
-                 const audio = new Audio('speedruntimeruhcountdown.mp3');
-         audio.play();
-            }
             if (timeRemaining < 0) {
                 clearInterval(timerInterval);
                 window.location.reload();   
@@ -293,7 +301,47 @@ setTimeout (() => {
 
     }, thingy3);
 }
+if (localStorage.getItem("button6") == "Yes") {
+        document.getElementById("Apply6").disabled = true;
+    document.body.style.backgroundImage = "url('Untitled3.png')";
+    document.getElementById("fab").textContent = "67 Factory (spooky edition)"
+    document.body.style.backgroundColor = 'rgb(0, 0, 0)';
+document.querySelector(".thing54").style.backgroundColor = 'rgb(194, 91, 8)';
+const thingy3 = 40 * 1000; 
+   const thingy4 = Math.floor(Math.random() * (50 - 30 + 1)) + 30;
 
+    setTimeout(() => {
+        document.querySelector(".img2").style.width = "150px"
+        document.querySelector(".img2").style.height = "150px"
+        document.getElementById("d").textContent = "Hey, do you have " + thingy4 + " candies? (limit slots) (10 seconds)";
+        document.getElementById("trigger").disabled = true;
+const audio = new Audio('ghost.mp3');
+         audio.play();
+    setTimeout(() => { 
+        if (limit >= thingy4) {
+            alert("Candy has been taken, reduced " + thingy4 + (" limit slots."))
+            document.getElementById("trigger").disabled = false;
+             document.getElementById("d").textContent = "Thank you.";
+              document.querySelector(".img2").style.width = "0px"
+        document.querySelector(".img2").style.height = "0px"
+            limit -= thingy4
+            const audio = new Audio('ghost.mp3');
+         audio.play();
+         const audio2 = new Audio('money.mp3');
+         audio2.play();
+        } else {
+            alert("You don't have enough.. DIE.")
+            const audio = new Audio('scary.mp3');
+         audio.play();
+    const stylething2 = document.body;
+stylething2.style.backgroundImage = 'url("https://www.indiatimes.com/thumb/123963169.cms?imgsize=46526&width=616&resizemode=4")';
+setTimeout (() => {
+    window.location.reload();
+    },2000 )
+        }
+    }, 10 * 1000 )
+    }, thingy3);
+}
 
 if (trueorfalse === false ) {
     if (localStorage.getItem("button2") == "Yes") {
@@ -489,6 +537,16 @@ goal -= randomnumber
     }
 
 }
+function apply6() {
+    localStorage.setItem("button6", "Yes");
+       document.getElementById("Apply6").disabled = true;
+    alert("Reload the page for the effect to take place. (WILL INSTANTLY START ONCE IT LOADS)")
+    }
+     function remove6() {
+        localStorage.removeItem('button6')
+
+       document.getElementById("Apply6").disabled = false;
+    }
 function apply5() {
     localStorage.setItem("button5", "Yes");
        document.getElementById("Apply5").disabled = true;
